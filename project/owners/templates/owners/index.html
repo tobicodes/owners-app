@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="text-center">
+
+<h3> Here are all the owners: </h3>
+<hr>
+{% for owner in owners %}
+    <p>
+        {{owner.first_name}} {{owner.last_name}}
+        <br>
+        | <a href="{{url_for('owners.show', id = owner.id)}}">View owner</a> |
+    </p>
+    
+{% endfor %}
+	<br>
+
+	<a href="{{url_for('owners.new')}}" class="btn btn-primary">Add new owner</a>
+
+</div>
+
+{% endblock %}

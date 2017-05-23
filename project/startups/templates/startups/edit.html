@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="text-center">
+		<h3>Let's edit {{startup.name}}'s info:</h3>
+
+		<form method="POST" action="{{url_for('startups.index', startup=startup, startup_id=startup_id, id=id)}}?_method=PATCH">
+			
+		{{form.csrf_token}}
+		<p>
+		Startup name
+		{{form.name(placeholder='Startup Name')}}
+			<span>
+				{% if form.name.errors %}
+					{% for error in form.name.errors %}
+						{{ error }}
+					{% endfor %}
+				{% endif %}
+			</span>	
+		</p>
+		<p>
+		Industry
+		{{form.industry(placeholder='Industry')}}
+			<span>
+				{% if form.industry.errors %}
+					{% for error in form.industry.errors %}
+						{{error}}
+					{% endfor %}
+				{% endif %}
+			</span>
+		</p>
+		<input type="submit" class="btn btn-primary" value="Edit startup">
+	</form>
+
+</div>
+
+
+{% endblock %}

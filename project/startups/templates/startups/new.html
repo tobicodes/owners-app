@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="text-center">
+	<h3> Add a new startup </h3>
+	<hr>
+
+	<form method="POST" action="{{url_for('startups.index', id=id)}}">
+		{{form.csrf_token}}
+		<p>
+			{{form.name(placeholder = 'Name')}}
+			<span>
+				{% if form.name.errors %}
+					{% for error in form.name.errors %}
+						{{ error }}
+					{% endfor %}
+				{% endif %}
+			</span>
+		</p>
+		<p>
+			{{form.industry(placeholder ='Industry')}}
+			<span>
+				{% if form.industry.errors %}
+					{% for error in form.industry.errors %}
+						{{error}}
+					{% endfor %}
+				{% endif %}
+			</span>
+		</p>
+		
+		<input type="submit" value="Add new" class="btn btn-primary">
+
+
+	</form>
+
+
+
+</div>
+
+
+{% endblock %}

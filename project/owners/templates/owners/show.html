@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="text-center">
+	<h3> {{owner.first_name}} {{owner.last_name}}</h3>
+	<hr>
+
+	<form method="POST" action="{{url_for('owners.show', id = owner.id)}}?_method=DELETE">
+		
+		<input type="submit" value="Delete me" class="btn btn-danger">
+	</form>
+
+	<a href="{{url_for('owners.edit', id = owner.id)}}">Edit me</a>
+	<!-- <form method="POST" action="{{url_for('owners.show', id = owner.id)}}?_method=PATCH">
+		<input type="submit" class ="btn btn-default" value ="Edit me">
+	</form>
+
+ -->
+
+</div>
+{% endblock %}
